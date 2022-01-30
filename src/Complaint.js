@@ -1,9 +1,4 @@
-import { useEffect, useState} from 'react'
-
-
 import './App.scss';
-
-
 
 export function Complaint(props) {
 

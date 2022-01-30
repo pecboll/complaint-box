@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import { Complaint } from './Complaint';
 import { Modal } from './Modal';
-import {collection, query, onSnapshot, doc, updateDoc, deletDoc, QuerySnapshot,} from 'firebase/firestore'
+import {collection, query, onSnapshot,} from 'firebase/firestore'
 import {db} from './firebase'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
 
       <div className='box'>
       <div className='complaintBydeveloper'>
-    <h3>Mensagem by developer</h3>
+    <h3>message by developer</h3>
     <p>thank you naiandra without you i would never have finished this shit.</p>
 </div>
         {todos.map((todo) => (
