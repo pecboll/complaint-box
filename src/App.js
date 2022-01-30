@@ -31,6 +31,10 @@ function App() {
       </div>
 
       <div className='box'>
+      <div className='complaintBydeveloper'>
+    <h3>Mensagem by developer</h3>
+    <p>thank you naiandra without you i would never have finished this shit.</p>
+</div>
         {todos.map((todo) => (
           <Complaint 
           key={todo.id}
