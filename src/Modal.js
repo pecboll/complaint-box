@@ -1,5 +1,5 @@
 import ReactModal from 'react-modal'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {db} from './firebase'
 import {collection, addDoc } from "firebase/firestore"
 
@@ -14,13 +14,14 @@ export function Modal() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (title !== "") {
+        if (title !== "" & complaint !== "") {
             await addDoc(collection(db, "todos"),{
                 title,
                 complaint,
             });
             setTitle("");
             setComplaint("");
+            setIsOpen(false);
         }
     }
 
@@ -34,9 +35,9 @@ export function Modal() {
 
     const customStyles = {
         content: {
-            height: '70%',
-            marginLeft: '10%',
-            marginRight: '10%',
+            height: '60%',
+            marginLeft: '1%',
+            marginRight: '1%',
             marginTop: '10%',
      backgroundColor: 'rgb(85, 16, 1)',
      border: '2px solid black'
@@ -69,8 +70,8 @@ overlay: {
              <form onSubmit={handleSubmit}>
              <div className='input'>
 
-                 <h2>Faça sua
-                      <span>Reclamação</span>
+                 <h2>Faça sua <span> Reclamação</span>
+                      
                       </h2>
 
                  <input type="text" placeholder='Nome'
