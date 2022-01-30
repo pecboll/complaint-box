@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useEffect, useState } from 'react';
+import './App.scss';
+import { Complaint } from './Complaint';
+import { Modal } from './Modal';
+import {collection, query, onSnapshot, doc, updateDoc, deletDoc, QuerySnapshot,} from 'firebase/firestore'
+import {db} from './firebase'
 
 function App() {
+  const [todos, setTodos] = useState([]); 
+
+  useEffect(() => {
+    const q = query(collection(db, 'todos'));
+    const unsub = onSnapshot(q, (QuerySnapshot) => { 
+      let todosArray = []; 
+      QuerySnapshot.forEach((doc) => {
+      todosArray.push({...doc.data(), id: doc.id });
+    });
+    setTodos(todosArray);
+  });
+    return () => unsub();
+  }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='header'>
+        <h1 className="title"> Caixa de <span>Reclamações</span></h1>
+      </div>
+      <div className='button'>
+        <Modal />
+      </div>
+
+      <div className='box'>
+        {todos.map((todo) => (
+          <Complaint 
+          key={todo.id}
+          name={todo.title} 
+          text={todo.complaint} />
+        ))}
+    
+   
+      </div>
+  
     </div>
   );
-}
+};
 
 export default App;

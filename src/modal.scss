@@ -1,0 +1,66 @@
+
+.esc{
+    margin-top: 0px;
+    text-align:right;
+    
+    margin-bottom: 10px;
+    button{
+      margin-top:0px;
+      background: red;
+      border-radius: 20px;
+      font-size: 13px;
+      
+      
+    }
+  }
+  
+  .input {
+    text-align: center;
+
+    input{
+        margin-bottom: 20px;
+        height: 40px;
+        width: 390px;
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 40px;
+        margin-bottom: 80px;
+
+        span {
+            color: white;
+        }
+    }
+
+    .submit{
+        margin-top: 30px;
+        height: 40px;
+        width: 180px;
+        background: rgb(4, 228, 4);
+        border-radius: 10px;
+        border: solid;
+    }
+    
+  }
+
+  
+.reclame{
+  background: green;
+height: 40px;
+width: 150px;
+border-radius: 10px;
+font-size:23px;
+border: solid;
+margin-top: 10%;
+}
+
+.reclameRed{
+  background: red;
+height: 40px;
+width: 150px;
+border-radius: 10px;
+font-size:23px;
+border: solid;
+margin-top: 10%;
+}
