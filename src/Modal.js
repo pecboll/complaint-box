@@ -1,5 +1,5 @@
 import ReactModal from 'react-modal'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {db} from './firebase'
 import {collection, addDoc } from "firebase/firestore"
 
@@ -11,7 +11,7 @@ export function Modal() {
 
     const [title, setTitle] = useState('');
  const [complaint, setComplaint] = useState('');
- const [counter, setCounter] = useState(0);
+ const [counter, setCounter] = useState(1);
  const [id, setId] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,15 +19,17 @@ export function Modal() {
             await addDoc(collection(db, "complaints"),{
                 title,
                 complaint,
-                id
+                id,
+                counter
             });
             setTitle("");
             setComplaint("");
             setIsOpen(false);
-            setCounter = counter++
-            setId = counter
+            setId(counter);
+            setCounter( counter + 1);
         }
     }
+
 
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
@@ -56,6 +58,7 @@ overlay: {
 }
 }
     return(
+        
         <>
       
         <button onClick={openModal}
@@ -98,3 +101,5 @@ overlay: {
         </ReactModal>
   </> )
 }
+
+
