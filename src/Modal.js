@@ -11,17 +11,21 @@ export function Modal() {
 
     const [title, setTitle] = useState('');
  const [complaint, setComplaint] = useState('');
-
+ const [counter, setCounter] = useState(0);
+ const [id, setId] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (title !== "" & complaint !== "") {
-            await addDoc(collection(db, "todos"),{
+            await addDoc(collection(db, "complaints"),{
                 title,
                 complaint,
+                id
             });
             setTitle("");
             setComplaint("");
             setIsOpen(false);
+            setCounter = counter++
+            setId = counter
         }
     }
 
@@ -69,7 +73,7 @@ overlay: {
              </div>
              <form onSubmit={handleSubmit}>
              <div className='input'>
-
+        
                  <h2>Faça sua <span> Reclamação</span>
                       
                       </h2>
