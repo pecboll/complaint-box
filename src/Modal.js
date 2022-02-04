@@ -1,7 +1,7 @@
 import ReactModal from 'react-modal'
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
 import {db} from './firebase'
-import {collection, addDoc } from "firebase/firestore"
+import {collection, addDoc, setDoc, doc } from "firebase/firestore"
 
 
 import './modal.scss'
@@ -12,21 +12,22 @@ export function Modal() {
     const [title, setTitle] = useState('');
  const [complaint, setComplaint] = useState('');
  const [counter, setCounter] = useState(1);
- const [id, setId] = useState(0);
+ const [id, setId] = useState(`complaint${counter}`);
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (title !== "" & complaint !== "") {
-            await addDoc(collection(db, "complaints"),{
+            await setDoc(doc(db, "complaints", id),{
                 title,
                 complaint,
                 id,
-                counter
             });
             setTitle("");
             setComplaint("");
             setIsOpen(false);
-            setId(counter);
             setCounter( counter + 1);
+            setId(`complaint${counter}`)
         }
     }
 

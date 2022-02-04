@@ -10,11 +10,11 @@ function App() {
   const [todos, setTodos] = useState([]); 
 
   useEffect(() => {
-    const q = query(collection(db, 'todos'));
+    const q = query(collection(db, 'complaints'));
     const unsub = onSnapshot(q, (QuerySnapshot) => { 
       let todosArray = []; 
       QuerySnapshot.forEach((doc) => {
-      todosArray.push({...doc.data(), id: doc.id });
+      todosArray.push({...doc.data()});
     });
     setTodos(todosArray);
   });
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-        <h1 className="title"> Caixa de <span>Reclamações</span></h1>
+       <img src='/logo.png'/>
       </div>
       <div className='button'>
         <Modal />
@@ -35,11 +35,11 @@ function App() {
     <h3>message by developer</h3>
     <p>thank you naiandra without you i would never have finished this shit.</p>
 </div>
-        {todos.map((todo) => (
+        {todos.map((complaints) => (
           <Complaint 
-          key={todo.id}
-          name={todo.title} 
-          text={todo.complaint} />
+          key={complaints.id}
+          name={complaints.title} 
+          text={complaints.complaint} />
         ))}
     
    
