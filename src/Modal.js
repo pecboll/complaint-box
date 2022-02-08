@@ -1,19 +1,23 @@
 import ReactModal from 'react-modal'
-import { useState, } from 'react';
+import { useState, useEffect} from 'react';
 import {db} from './firebase'
-import {collection, addDoc, setDoc, doc } from "firebase/firestore"
+import { setDoc, doc } from "firebase/firestore"
 
 
 import './modal.scss'
 
 
-export function Modal() {
+export function Modal(props) {
+
+    
 
     const [title, setTitle] = useState('');
  const [complaint, setComplaint] = useState('');
- const [counter, setCounter] = useState(1);
- const [id, setId] = useState(`complaint${counter}`);
+ const [id, setId] = useState('');
     
+ useEffect(() => {
+ setId(`complaint${props.count}`)
+  }, [props]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,8 +30,6 @@ export function Modal() {
             setTitle("");
             setComplaint("");
             setIsOpen(false);
-            setCounter( counter + 1);
-            setId(`complaint${counter}`)
         }
     }
 
@@ -61,7 +63,9 @@ overlay: {
     return(
         
         <>
-      
+      {console.log(id)}
+
+
         <button onClick={openModal}
         className={'reclame'}
         > Reclame </button>
@@ -69,6 +73,7 @@ overlay: {
          isOpen={modalIsOpen}
          shouldCloseOnEsc={true}
          style={customStyles}
+         ariaHideApp={false}
          >
              <div className='esc'>
                   <button
