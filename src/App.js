@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-       <img src='./logoblack.png' alt='logo'/>
+       <img src='./logofinal.png' alt='logo'/>
       </div>
       <div className='button'>
      
