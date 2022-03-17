@@ -7,9 +7,9 @@
     button{
       margin-top:0px;
       background: red;
-      border-radius: 20px;
+      border-radius: 50px;
       font-size: 13px;
-      
+      border: solid 1px;
       
     }
   }
@@ -37,7 +37,8 @@
         margin-top: 30px;
         height: 40px;
         width: 180px;
-        background: rgb(4, 228, 4);
+        background: rgb(17, 17, 17);
+        color: white;
         border-radius: 10px;
         border: solid;
     }
@@ -46,7 +47,8 @@
 
   
 .reclame{
-  background: green;
+  background: rgb(17, 17, 17);
+  color: white;
 height: 40px;
 width: 150px;
 border-radius: 10px;

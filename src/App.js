@@ -8,6 +8,7 @@ import {db} from './firebase'
 
 function App() {
   const [todos, setTodos] = useState([]); 
+  const [one, setOne] = useState([]);
 
   useEffect(() => {
     const q = query(collection(db, 'complaints'));
@@ -22,6 +23,19 @@ function App() {
     return () => unsub();
   }, []);
 
+  useEffect(() => {
+    const q = query(collection(db, 'oneone'));
+    
+    const unsub = onSnapshot(q, (QuerySnapshot) => { 
+      let todosArray = []; 
+      QuerySnapshot.forEach((doc) => {
+      todosArray.push({...doc.data()});
+    });
+    setOne(todosArray);
+  });
+    return () => unsub();
+  }, []);
+
   const counter = todos.length
 
 
@@ -29,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-       <img src='https://by3302files.storage.live.com/y4mx0h0LSaWNJNZWq0o9UDCGqs3NqZkoJNn-iEGH1wA1mRzKOK7HRz2HhECwphtvfBbKZXbaMPj-4DyQncGX3jrINVekA0GGNerJ83OBMIHvqJPoNJJZr3jUhMkMyTxzITIw8A8pnAb574RT_iZsnt6Y0Ilw0CxESyj6qfgwoJ2XuGPBDPs-P0iOQHH05f61QaS?encodeFailures=1&width=645&height=411'/>
+       <img src='./logoblack.png' alt='logo'/>
       </div>
       <div className='button'>
      
@@ -40,10 +54,15 @@ function App() {
       </div>
 
       <div className='box'>
+      {one.map((oneone) => (
       <div className='complaintBydeveloper'>
-    <h3>message by developer</h3>
-    <p>thank you naiandra without you i would never have finished this shit.</p>
-</div> {console.log(counter)}
+        <h3>Ultima reclamação</h3>
+    <p> <span>
+      ({oneone.oneT})
+      </span> {oneone.oneC}</p>
+</div>))}
+
+
         {todos.map((complaints) => (
           <Complaint 
           key={complaints.id}
