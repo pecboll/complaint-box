@@ -120,7 +120,7 @@ backgroundColor: 'rgba(100, 100, 100, 0.99)'
          style={customStyles}
          ariaHideApp={false}
     > <div className='Mlogin'>
-      <img src='./logofinal.png' alt='logo'/>
+      <img src='./Logo.png' alt='logo'/>
       <h3>Digite seu nome !</h3>
       <p>(Não serar possivel a alteração futuramente) </p>
 
