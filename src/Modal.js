@@ -11,7 +11,7 @@ export function Modal(props) {
 
     
 
-    const [title, setTitle] = useState('');
+    const title = props.name
     const [complaint, setComplaint] = useState('');
     const  [oneT, setOneT] = useState('');
     const  [oneC, setOneC] = useState('')
@@ -35,7 +35,6 @@ export function Modal(props) {
                 oneT,
                 oneC,
             });
-            setTitle("");
             setComplaint("");
             setIsOpen(false);
         } if (title !== "" & complaint !== ""){
@@ -78,7 +77,6 @@ overlay: {
     return(
         
         <>
-      {console.log(id)}
 
 
         <button onClick={openModal}
@@ -103,8 +101,7 @@ overlay: {
                       </h2>
 
                  <input type="text" placeholder='Nome'
-                 value={title}
-                 onChange={(e) => setTitle(e.target.value)}
+                 value={title} disabled={true}
                   /> <br/>
 
              <input type="text"
